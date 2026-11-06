@@ -48,7 +48,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Custom Styles & Visual Effects */
         body {
             background-color: #1A0307;
             color: #FFFDF9;
@@ -56,7 +55,6 @@
             overflow-x: hidden;
         }
 
-        /* Gold Foil Shimmer Text Effect */
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF8DC 0%, #F3E5AB 25%, #D4AF37 50%, #B8860B 75%, #F3E5AB 100%);
             -webkit-background-clip: text;
@@ -65,15 +63,10 @@
             animation: shine 6s linear infinite;
         }
 
-        .gold-border-gradient {
-            border-image: linear-gradient(135deg, #D4AF37, #FFF8DC, #B8860B, #D4AF37) 1;
-        }
-
         @keyframes shine {
             to { background-position: 200% center; }
         }
 
-        /* Subtle Petal Fall Canvas Overlay */
         #particleCanvas {
             position: fixed;
             top: 0;
@@ -84,7 +77,6 @@
             z-index: 10;
         }
 
-        /* Ornamental Card Glassmorphism */
         .wedding-card {
             background: rgba(45, 6, 12, 0.85);
             backdrop-filter: blur(12px);
@@ -98,13 +90,11 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
-        /* Traditional Pattern Overlay */
         .bg-pattern {
             background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 1px);
             background-size: 24px 24px;
         }
 
-        /* Golden Corner Motifs */
         .corner-motif {
             position: absolute;
             width: 40px;
@@ -117,13 +107,11 @@
         .corner-bl { bottom: 12px; left: 12px; border-bottom: 2px solid; border-left: 2px solid; }
         .corner-br { bottom: 12px; right: 12px; border-bottom: 2px solid; border-right: 2px solid; }
 
-        /* Slow Rotating Mandala */
         .rotate-slow {
             animation: spin 60s linear infinite;
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* Toast Popup Animation */
         #toast {
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             transform: translateY(100px);
@@ -134,28 +122,18 @@
             opacity: 1;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1A0307;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #B8860B;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #D4AF37;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1A0307; }
+        ::-webkit-scrollbar-thumb { background: #B8860B; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
     </style>
 </head>
 <body class="relative bg-maroon-900 selection:bg-gold-500 selection:text-maroon-900">
 
-    <!-- Interactive Canvas for Floating Gold Dust & Rose Petals -->
+    <!-- Canvas Animation Overlay -->
     <canvas id="particleCanvas"></canvas>
 
-    <!-- Top Fixed Glassmorphism Navbar -->
+    <!-- Top Navigation Bar -->
     <nav class="fixed top-0 left-0 w-full z-50 bg-maroon-900/80 backdrop-blur-md border-b border-gold-500/30 px-4 py-3 transition-all duration-300">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <a href="#hero" class="font-cinzel text-gold-400 font-bold text-lg tracking-wider flex items-center gap-2">
@@ -163,7 +141,6 @@
                 <span>S & P</span>
             </a>
             
-            <!-- Desktop Nav Links -->
             <div class="hidden md:flex items-center space-x-6 text-sm font-cinzel text-gold-200">
                 <a href="#hero" class="hover:text-gold-400 transition-colors">Home</a>
                 <a href="#invitation" class="hover:text-gold-400 transition-colors">Invitation</a>
@@ -173,23 +150,16 @@
                 <a href="#venue" class="hover:text-gold-400 transition-colors">Venue</a>
             </div>
 
-            <!-- Audio & Action Buttons -->
             <div class="flex items-center gap-3">
-                <button id="audioToggle" onclick="toggleAudio()" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold-500/50 bg-maroon-800/80 text-gold-300 text-xs font-cinzel hover:bg-gold-500 hover:text-maroon-900 transition-all shadow-md" title="Toggle Shehnai Ambient Sound">
-                    <i id="audioIcon" class="fas fa-music"></i>
-                    <span id="audioText" class="hidden sm:inline">Music</span>
+                <button onclick="shareInvitation()" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-maroon-900 font-semibold text-xs uppercase tracking-wider hover:brightness-110 shadow-lg transition-all flex items-center gap-1.5">
+                    <i class="fas fa-share-alt"></i> Share
                 </button>
-                <a href="#share" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-maroon-900 font-semibold text-xs uppercase tracking-wider hover:brightness-110 shadow-lg transition-all">
-                    Share
-                </a>
-                <!-- Mobile Menu Button -->
                 <button onclick="toggleMobileMenu()" class="md:hidden text-gold-400 p-2 focus:outline-none">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
         <div id="mobileMenu" class="hidden md:hidden bg-maroon-900/95 border-b border-gold-500/30 px-6 py-4 space-y-3 font-cinzel text-center text-gold-200">
             <a href="#hero" onclick="toggleMobileMenu()" class="block py-1 hover:text-gold-400">Home</a>
             <a href="#invitation" onclick="toggleMobileMenu()" class="block py-1 hover:text-gold-400">Invitation</a>
@@ -200,9 +170,8 @@
         </div>
     </nav>
 
-    <!-- MAIN HERO SECTION -->
+    <!-- HERO SECTION -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 bg-pattern overflow-hidden">
-        <!-- Background Mandala SVG Watermark -->
         <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
             <svg class="w-[600px] h-[600px] text-gold-400 rotate-slow fill-current" viewBox="0 0 500 500">
                 <path d="M250 50 C260 100, 300 100, 350 70 C330 120, 370 150, 420 150 C380 180, 400 230, 440 250 C400 270, 380 320, 420 350 C370 350, 330 380, 350 430 C300 400, 260 400, 250 450 C240 400, 200 400, 150 430 C170 380, 130 350, 80 350 C120 320, 100 270, 60 250 C100 230, 120 180, 80 150 C130 150, 170 120, 150 70 C200 100, 240 100, 250 50 Z"/>
@@ -212,20 +181,15 @@
         </div>
 
         <div class="relative z-10 max-w-4xl w-full text-center space-y-6">
-            <!-- Auspicious Telugu Title Frame -->
             <div class="inline-block px-6 py-2 rounded-full border border-gold-500/40 bg-maroon-800/60 backdrop-blur-sm shadow-xl">
                 <h2 class="font-telugu text-gold-300 text-xl md:text-3xl font-semibold tracking-wide">
                     శ్రీరస్తు శుభమస్తు అవిఘ్నమస్తు
                 </h2>
             </div>
 
-            <!-- Decorative Kalash / Ganesha Motif SVG -->
             <div class="flex justify-center my-4">
                 <svg class="w-16 h-16 text-gold-400 filter drop-shadow-lg" viewBox="0 0 100 100" fill="currentColor">
-                    <!-- Stylized Ganesha / Kalash SVG -->
                     <path d="M50 10 C53 20 65 25 65 35 C65 45 55 50 50 50 C45 50 35 45 35 35 C35 25 47 20 50 10 Z M50 52 C65 52 80 60 80 75 C80 85 70 90 50 90 C30 90 20 85 20 75 C20 60 35 52 50 52 Z"/>
-                    <circle cx="50" cy="25" r="4" fill="#6B1622"/>
-                    <circle cx="50" cy="70" r="6" fill="#D4AF37"/>
                 </svg>
             </div>
 
@@ -233,7 +197,6 @@
                 Wedding Invitation
             </p>
 
-            <!-- Groom & Bride Names -->
             <div class="space-y-4 py-4">
                 <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold leading-tight">
                     <span class="gold-gradient-text block">Chi. Sai Kishor Reddy</span>
@@ -250,7 +213,6 @@
                 </h1>
             </div>
 
-            <!-- Date & Muhurtham Summary -->
             <div class="pt-4 space-y-2">
                 <p class="font-cinzel text-gold-100 text-lg md:text-2xl font-semibold tracking-wider">
                     SUNDAY, 22<sup>ND</sup> NOVEMBER 2026
@@ -262,18 +224,10 @@
                     Secunderabad, Telangana
                 </p>
             </div>
-
-            <!-- Scroll Indicator -->
-            <div class="pt-8">
-                <a href="#invitation" class="inline-flex flex-col items-center text-gold-400/80 hover:text-gold-300 transition-colors">
-                    <span class="text-xs font-cinzel tracking-widest mb-2">Scroll Down</span>
-                    <i class="fas fa-chevron-down animate-bounce text-sm"></i>
-                </a>
-            </div>
         </div>
     </section>
 
-    <!-- LIVE COUNTDOWN SECTION -->
+    <!-- COUNTDOWN SECTION -->
     <section id="countdown" class="py-12 bg-maroon-800/50 border-y border-gold-500/20 relative">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h3 class="font-cinzel text-gold-300 text-sm md:text-base tracking-[0.2em] uppercase mb-8">
@@ -281,32 +235,25 @@
             </h3>
 
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
-                <!-- Days Card -->
-                <div class="wedding-card p-4 rounded-xl text-center relative overflow-hidden group">
+                <div class="wedding-card p-4 rounded-xl text-center relative overflow-hidden">
                     <div class="corner-motif corner-tl"></div>
                     <div class="corner-motif corner-tr"></div>
                     <span id="cd-days" class="font-serif text-4xl md:text-5xl font-bold text-gold-400 block mb-1">00</span>
                     <span class="font-cinzel text-xs text-gold-200 tracking-wider uppercase">Days</span>
                 </div>
-
-                <!-- Hours Card -->
-                <div class="wedding-card p-4 rounded-xl text-center relative overflow-hidden group">
+                <div class="wedding-card p-4 rounded-xl text-center relative overflow-hidden">
                     <div class="corner-motif corner-tl"></div>
                     <div class="corner-motif corner-tr"></div>
                     <span id="cd-hours" class="font-serif text-4xl md:text-5xl font-bold text-gold-400 block mb-1">00</span>
                     <span class="font-cinzel text-xs text-gold-200 tracking-wider uppercase">Hours</span>
                 </div>
-
-                <!-- Minutes Card -->
-                <div class="wedding-card p-4 rounded-xl text-center relative overflow-hidden group">
+                <div class="wedding-card p-4 rounded-xl text-center relative overflow-hidden">
                     <div class="corner-motif corner-tl"></div>
                     <div class="corner-motif corner-tr"></div>
                     <span id="cd-minutes" class="font-serif text-4xl md:text-5xl font-bold text-gold-400 block mb-1">00</span>
                     <span class="font-cinzel text-xs text-gold-200 tracking-wider uppercase">Minutes</span>
                 </div>
-
-                <!-- Seconds Card -->
-                <div class="wedding-card p-4 rounded-xl text-center relative overflow-hidden group">
+                <div class="wedding-card p-4 rounded-xl text-center relative overflow-hidden">
                     <div class="corner-motif corner-tl"></div>
                     <div class="corner-motif corner-tr"></div>
                     <span id="cd-seconds" class="font-serif text-4xl md:text-5xl font-bold text-gold-400 block mb-1">00</span>
@@ -320,16 +267,13 @@
         </div>
     </section>
 
-    <!-- FORMAL INVITATION CARD SECTION -->
+    <!-- FORMAL INVITATION SECTION -->
     <section id="invitation" class="py-20 px-4 relative bg-pattern">
         <div class="max-w-3xl mx-auto">
-            <!-- Ornate Traditional Wedding Card Wrapper -->
             <div class="wedding-card-light rounded-2xl p-6 sm:p-10 md:p-14 text-maroon-900 relative shadow-2xl">
-                <!-- Card Inner Gold Foil Border Frame -->
                 <div class="absolute inset-3 border border-gold-600/40 rounded-xl pointer-events-none"></div>
                 <div class="absolute inset-5 border-2 border-gold-500/60 rounded-lg pointer-events-none"></div>
 
-                <!-- Top Lotus SVG Icon -->
                 <div class="text-center mb-6">
                     <svg class="w-12 h-12 text-gold-600 mx-auto fill-current" viewBox="0 0 100 100">
                         <path d="M50 15 C55 35, 75 40, 85 55 C70 55, 60 70, 50 85 C40 70, 30 55, 15 55 C25 40, 45 35, 50 15 Z"/>
@@ -339,13 +283,11 @@
                     </span>
                 </div>
 
-                <!-- Invitation Core Text -->
                 <div class="text-center space-y-6">
                     <p class="font-serif italic text-lg sm:text-xl text-maroon-800 leading-relaxed max-w-xl mx-auto">
                         "We solicit your gracious presence with family & friends on the auspicious occasion of the marriage of our second son"
                     </p>
 
-                    <!-- Groom Details -->
                     <div class="py-2 border-y border-gold-500/30">
                         <h3 class="font-serif text-3xl sm:text-4xl font-bold text-maroon-900 tracking-wide">
                             Chi. Sai Kishor Reddy
@@ -354,7 +296,6 @@
 
                     <p class="font-serif italic text-gold-700 text-2xl font-light">with</p>
 
-                    <!-- Bride Details -->
                     <div class="py-2 border-y border-gold-500/30">
                         <h3 class="font-serif text-3xl sm:text-4xl font-bold text-maroon-900 tracking-wide">
                             Chi. La. Sow. Prasuna
@@ -364,7 +305,6 @@
                         </p>
                     </div>
 
-                    <!-- Sumuhurtham Highlight Box -->
                     <div class="my-8 p-6 bg-maroon-900 text-gold-100 rounded-xl border border-gold-500 shadow-inner relative overflow-hidden">
                         <div class="corner-motif corner-tl"></div>
                         <div class="corner-motif corner-tr"></div>
@@ -384,19 +324,14 @@
                             <span class="font-serif italic text-sm text-gold-300">"Dhanur Lagnam"</span>
                         </div>
                     </div>
-
-                    <p class="font-serif italic text-maroon-800 text-sm sm:text-base">
-                        Your blessings and presence are the greatest gift to the couple as they begin their sacred journey together.
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CELEBRATIONS & EVENTS SECTION -->
+    <!-- CELEBRATIONS SECTION -->
     <section id="events" class="py-20 px-4 bg-maroon-800/40 relative">
         <div class="max-w-5xl mx-auto">
-            <!-- Section Title -->
             <div class="text-center space-y-2 mb-14">
                 <span class="font-cinzel text-xs md:text-sm text-gold-400 tracking-[0.3em] uppercase">Program Details</span>
                 <h2 class="font-serif text-3xl md:text-5xl font-bold gold-gradient-text">Wedding Celebrations</h2>
@@ -404,11 +339,10 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Event 1: Sumuhurtham -->
-                <div class="wedding-card rounded-2xl p-6 sm:p-8 relative flex flex-col justify-between group hover:border-gold-400 transition-all duration-300">
+                <!-- Sumuhurtham Card -->
+                <div class="wedding-card rounded-2xl p-6 sm:p-8 relative flex flex-col justify-between">
                     <div class="corner-motif corner-tl"></div>
                     <div class="corner-motif corner-tr"></div>
-                    
                     <div>
                         <div class="flex items-center justify-between border-b border-gold-500/30 pb-4 mb-6">
                             <div>
@@ -428,7 +362,6 @@
                                     <p class="text-xs text-gold-300/80">Auspicious Day</p>
                                 </div>
                             </div>
-
                             <div class="flex items-start gap-3">
                                 <i class="far fa-clock text-gold-400 text-lg mt-0.5 w-5"></i>
                                 <div>
@@ -436,15 +369,12 @@
                                     <p class="text-xs text-gold-300/80">Dhanur Lagnam</p>
                                 </div>
                             </div>
-
                             <div class="flex items-start gap-3">
                                 <i class="fas fa-map-marker-alt text-gold-400 text-lg mt-0.5 w-5"></i>
                                 <div>
                                     <p class="font-semibold text-gold-200">Urvasi Royal (Grand) Banquet Hall</p>
                                     <p class="text-xs text-gold-300/80 leading-relaxed">
-                                        4th Floor, Patney Center,<br>
-                                        Beside Yashoda Hospital,<br>
-                                        Secunderabad.
+                                        4th Floor, Patney Center,<br>Beside Yashoda Hospital, Secunderabad.
                                     </p>
                                 </div>
                             </div>
@@ -461,11 +391,10 @@
                     </div>
                 </div>
 
-                <!-- Event 2: Reception -->
-                <div class="wedding-card rounded-2xl p-6 sm:p-8 relative flex flex-col justify-between group hover:border-gold-400 transition-all duration-300">
+                <!-- Reception Card -->
+                <div class="wedding-card rounded-2xl p-6 sm:p-8 relative flex flex-col justify-between">
                     <div class="corner-motif corner-tl"></div>
                     <div class="corner-motif corner-tr"></div>
-
                     <div>
                         <div class="flex items-center justify-between border-b border-gold-500/30 pb-4 mb-6">
                             <div>
@@ -485,7 +414,6 @@
                                     <p class="text-xs text-gold-300/80">Evening Celebration</p>
                                 </div>
                             </div>
-
                             <div class="flex items-start gap-3">
                                 <i class="far fa-clock text-gold-400 text-lg mt-0.5 w-5"></i>
                                 <div>
@@ -493,14 +421,12 @@
                                     <p class="text-xs text-gold-300/80">Dinner & Festivities</p>
                                 </div>
                             </div>
-
                             <div class="flex items-start gap-3">
                                 <i class="fas fa-map-marker-alt text-gold-400 text-lg mt-0.5 w-5"></i>
                                 <div>
                                     <p class="font-semibold text-gold-200">Telangana Gardens</p>
                                     <p class="text-xs text-gold-300/80 leading-relaxed">
-                                        New Bowenpally,<br>
-                                        Secunderabad.
+                                        New Bowenpally, Secunderabad.
                                     </p>
                                 </div>
                             </div>
@@ -523,8 +449,6 @@
     <!-- FAMILY & HOST SECTION -->
     <section id="family" class="py-20 px-4 relative bg-pattern">
         <div class="max-w-4xl mx-auto space-y-12">
-            
-            <!-- Invited By Box -->
             <div class="text-center space-y-4">
                 <span class="font-cinzel text-xs md:text-sm text-gold-400 tracking-[0.25em] uppercase">Cordially Inviting You</span>
                 <h2 class="font-serif text-3xl md:text-4xl font-bold text-gold-200">Invitation By</h2>
@@ -539,7 +463,6 @@
                 </div>
             </div>
 
-            <!-- Best Compliments From Box -->
             <div class="text-center space-y-6 pt-6">
                 <div class="flex items-center justify-center gap-4">
                     <span class="h-[1px] w-12 md:w-20 bg-gold-500/40"></span>
@@ -576,141 +499,199 @@
                             <span class="font-serif text-base text-gold-100 font-medium">G. Jyothirmayi – Sai Kiran Reddy</span>
                         </div>
                         <div class="flex items-center space-x-3 p-2 border-b border-gold-500/10">
-                            <i class="fas fa-star text-gold-400 text-xs"></i>
-                            <span class="font-serif text-base text-gold-100 font-semibold">Sai Ram Reddy</span>
+                            <i class="fas fa-heart text-gold-400 text-xs"></i>
+                            <span class="font-serif text-base text-gold-100 font-medium">Sai Ram Reddy</span>
                         </div>
                         <div class="flex items-center space-x-3 p-2 border-b border-gold-500/10">
-                            <i class="fas fa-users text-gold-400 text-xs"></i>
-                            <span class="font-serif text-base text-gold-100 font-semibold">Near & Dear</span>
+                            <i class="fas fa-heart text-gold-400 text-xs"></i>
+                            <span class="font-serif text-base text-gold-100 font-medium">Near & Dear</span>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- VENUE MAP INTERACTIVE SECTION -->
+    <!-- VENUE MAPS SECTION -->
     <section id="venue" class="py-20 px-4 bg-maroon-800/40 relative">
-        <div class="max-w-5xl mx-auto space-y-10">
-            <div class="text-center space-y-2">
-                <span class="font-cinzel text-xs md:text-sm text-gold-400 tracking-[0.3em] uppercase">Location & Navigation</span>
-                <h2 class="font-serif text-3xl md:text-5xl font-bold gold-gradient-text">Venue Directions</h2>
-                <p class="font-sans text-xs text-gold-300/80">Click below to navigate directly using Google Maps</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Venue 1 Card -->
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <span class="font-cinzel text-xs md:text-sm text-gold-400 tracking-[0.3em] uppercase">Location Guide</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-bold gold-gradient-text">Wedding Venues</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 text-left">
                 <div class="wedding-card p-6 rounded-2xl flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between border-b border-gold-500/20 pb-3 mb-4">
-                            <h4 class="font-cinzel text-lg font-bold text-gold-300">Wedding Venue</h4>
-                            <span class="text-xs px-2.5 py-1 bg-gold-500/20 border border-gold-500/40 rounded-full text-gold-300">22 Nov 2026</span>
-                        </div>
-                        <h3 class="font-serif text-2xl font-bold text-gold-100 mb-2">Urvasi Royal (Grand) Banquet Hall</h3>
-                        <p class="font-sans text-sm text-gold-200/80 leading-relaxed mb-6">
-                            4th Floor, Patney Center,<br>
-                            Beside Yashoda Hospital, Secunderabad.
+                        <h3 class="font-serif text-xl font-bold text-gold-200 mb-2">Wedding Ceremony</h3>
+                        <p class="font-serif text-lg text-gold-400 mb-4">Urvasi Royal (Grand) Banquet Hall</p>
+                        <p class="text-xs text-gold-100/80 leading-relaxed mb-6">
+                            4th Floor, Patney Center, Beside Yashoda Hospital, Secunderabad, Telangana.
                         </p>
                     </div>
-
-                    <a href="https://www.google.com/maps/search/?api=1&query=Urvasi+Royal+Grand+Banquet+Hall+Patney+Center+Secunderabad" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-gradient-to-r from-gold-600 to-gold-500 text-maroon-900 rounded-lg font-semibold text-xs uppercase tracking-wider text-center hover:brightness-110 shadow-lg transition-all flex items-center justify-center gap-2">
-                        <i class="fas fa-map-marked-alt text-base"></i> Open Google Maps
+                    <a href="https://www.google.com/maps/search/?api=1&query=Urvasi+Royal+Grand+Banquet+Hall+Patney+Center+Secunderabad" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg bg-gold-600 text-maroon-900 font-semibold text-xs uppercase tracking-wider text-center hover:bg-gold-500 transition-all block">
+                        Open in Google Maps
                     </a>
                 </div>
 
-                <!-- Venue 2 Card -->
                 <div class="wedding-card p-6 rounded-2xl flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between border-b border-gold-500/20 pb-3 mb-4">
-                            <h4 class="font-cinzel text-lg font-bold text-gold-300">Reception Venue</h4>
-                            <span class="text-xs px-2.5 py-1 bg-gold-500/20 border border-gold-500/40 rounded-full text-gold-300">24 Nov 2026</span>
-                        </div>
-                        <h3 class="font-serif text-2xl font-bold text-gold-100 mb-2">Telangana Gardens</h3>
-                        <p class="font-sans text-sm text-gold-200/80 leading-relaxed mb-6">
-                            New Bowenpally,<br>
-                            Secunderabad.
+                        <h3 class="font-serif text-xl font-bold text-gold-200 mb-2">Wedding Reception</h3>
+                        <p class="font-serif text-lg text-gold-400 mb-4">Telangana Gardens</p>
+                        <p class="text-xs text-gold-100/80 leading-relaxed mb-6">
+                            New Bowenpally, Secunderabad, Telangana.
                         </p>
                     </div>
-
-                    <a href="https://www.google.com/maps/search/?api=1&query=Telangana+Gardens+New+Bowenpally+Secunderabad" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-gradient-to-r from-gold-600 to-gold-500 text-maroon-900 rounded-lg font-semibold text-xs uppercase tracking-wider text-center hover:brightness-110 shadow-lg transition-all flex items-center justify-center gap-2">
-                        <i class="fas fa-map-marked-alt text-base"></i> Open Google Maps
+                    <a href="https://www.google.com/maps/search/?api=1&query=Telangana+Gardens+New+Bowenpally+Secunderabad" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg bg-gold-600 text-maroon-900 font-semibold text-xs uppercase tracking-wider text-center hover:bg-gold-500 transition-all block">
+                        Open in Google Maps
                     </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SHARE INVITATION SECTION -->
-    <section id="share" class="py-16 px-4 bg-pattern relative">
-        <div class="max-w-2xl mx-auto text-center space-y-6">
-            <div class="wedding-card p-8 md:p-12 rounded-2xl relative shadow-2xl">
-                <div class="corner-motif corner-tl"></div>
-                <div class="corner-motif corner-tr"></div>
-                <div class="corner-motif corner-bl"></div>
-                <div class="corner-motif corner-br"></div>
-
-                <div class="w-16 h-16 rounded-full bg-gold-500/10 border border-gold-500/40 flex items-center justify-center text-gold-400 mx-auto mb-4">
-                    <i class="fas fa-share-alt text-2xl"></i>
-                </div>
-
-                <h2 class="font-serif text-3xl font-bold gold-gradient-text">Share This Invitation</h2>
-                <p class="font-sans text-sm text-gold-200/90 leading-relaxed max-w-md mx-auto">
-                    Share the joyful news with your family and friends via WhatsApp, SMS, or Social Media.
-                </p>
-
-                <!-- Quick Share Buttons Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
-                    <button onclick="shareInvitation()" class="py-3 px-6 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-maroon-900 font-bold text-xs uppercase tracking-wider hover:brightness-110 shadow-lg transition-all flex items-center justify-center gap-2">
-                        <i class="fas fa-share-nodes text-base"></i> Share Digital Card
-                    </button>
-                    
-                    <button onclick="copyInvitationLink()" class="py-3 px-6 rounded-xl border border-gold-500/60 bg-maroon-800/80 text-gold-200 hover:bg-gold-500/20 font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2">
-                        <i class="fas fa-copy text-base"></i> Copy Card Link
-                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER SECTION -->
-    <footer class="py-12 px-4 border-t border-gold-500/30 text-center bg-maroon-950 relative">
-        <div class="max-w-4xl mx-auto space-y-4">
-            <!-- Mandala SVG -->
-            <svg class="w-10 h-10 text-gold-500/60 mx-auto fill-current" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="2" fill="none"/>
-                <path d="M50 10 L50 90 M10 50 L90 50"/>
-            </svg>
-
-            <h3 class="font-serif text-2xl md:text-3xl font-bold text-gold-300">
-                Sai Kishor Reddy & Prasuna
-            </h3>
-
-            <p class="font-cinzel text-xs tracking-widest text-gold-400/80 uppercase">
-                22 November 2026 • Secunderabad
-            </p>
-
-            <p class="font-serif italic text-sm text-gold-200/60 max-w-md mx-auto pt-2">
-                "Together with our families, we look forward to celebrating this blessed union with you."
-            </p>
-
-            <div class="pt-6 border-t border-gold-500/10 text-xs text-gold-400/50">
-                <p>© 2026 Sai Kishor Reddy & Prasuna Wedding Invitation.</p>
+    <footer id="share" class="py-16 px-4 bg-maroon-900 border-t border-gold-500/30 text-center space-y-6">
+        <div class="max-w-2xl mx-auto space-y-4">
+            <h3 class="font-serif text-3xl font-bold gold-gradient-text">Sai Kishor Reddy & Prasuna</h3>
+            <p class="font-cinzel text-gold-300 tracking-widest text-sm">22 November 2026</p>
+            
+            <div class="pt-4 flex justify-center gap-4">
+                <button onclick="shareInvitation()" class="px-6 py-3 rounded-full bg-gradient-to-r from-gold-600 to-gold-500 text-maroon-900 font-bold text-xs uppercase tracking-wider hover:brightness-110 shadow-xl transition-all flex items-center gap-2">
+                    <i class="fas fa-share-alt"></i> Share Invitation URL
+                </button>
             </div>
         </div>
+        <p class="text-xs text-gold-300/50 pt-8 font-sans">
+            © 2026 Sai Kishor Reddy & Prasuna Wedding Invitation. All Rights Reserved.
+        </p>
     </footer>
 
-    <!-- TOAST NOTIFICATION CONTAINER -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-gold-500 text-maroon-950 font-bold px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-sm">
-        <i class="fas fa-check-circle text-lg"></i>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-gold-500 text-maroon-900 font-semibold px-6 py-3 rounded-full shadow-2xl flex items-center gap-2 text-sm">
+        <i class="fas fa-check-circle"></i>
         <span id="toastMsg">Link copied to clipboard!</span>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- Background Audio & Floating Music Control Button[cite: 1] -->
+    <audio id="weddingAudio" loop preload="auto">
+        <source src="Manasaa - SenSongsmp3.Co.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button id="musicToggleBtn" onclick="toggleAudio()" class="fixed bottom-6 right-6 z-50 bg-amber-600 hover:bg-amber-700 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 border-2 border-amber-200 animate-bounce" title="Toggle Music">
+        <svg id="audioIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+        </svg>
+    </button>
+
+    <!-- JavaScript Logic -->
     <script>
-        // -------------------------------------------------------------
-        // 1. Particle Canvas Engine (Rose Petals & Gold Dust)
-        // -------------------------------------------------------------
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Countdown Timer (IST Timezone target: Nov 22, 2026 09:51:00 IST)
+        const weddingDate = new Date("2026-11-22T09:51:00+05:30").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('cd-days').innerText = '00';
+                document.getElementById('cd-hours').innerText = '00';
+                document.getElementById('cd-minutes').innerText = '00';
+                document.getElementById('cd-seconds').innerText = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Audio Auto-play & Mute Toggle Handler[cite: 1]
+        const audio = document.getElementById('weddingAudio');
+        const btn = document.getElementById('musicToggleBtn');
+        const icon = document.getElementById('audioIcon');
+
+        document.addEventListener('click', function initAudio() {
+            if (audio.paused) {
+                audio.play().catch(e => console.log("Autoplay waiting for user interaction:", e));
+            }
+            document.removeEventListener('click', initAudio);
+        }, { once: true });
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                btn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                btn.classList.add('bg-amber-600', 'hover:bg-amber-700');
+                icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />`;
+            } else {
+                audio.pause();
+                btn.classList.remove('bg-amber-600', 'hover:bg-amber-700');
+                btn.classList.add('bg-red-600', 'hover:bg-red-700');
+                icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />`;
+            }
+        }
+
+        // Share Invitation Functionality
+        function shareInvitation() {
+            const shareData = {
+                title: 'Wedding Invitation | Sai Kishor Reddy & Prasuna',
+                text: 'You are cordially invited to the wedding of Sai Kishor Reddy & Prasuna on 22nd November 2026!',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showToast("Invitation link copied to clipboard!");
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Add to Calendar Generator
+        function addToCalendar(eventType) {
+            let title, startDate, endDate, location, description;
+            if (eventType === 'wedding') {
+                title = "Sai Kishor Reddy & Prasuna Wedding (Sumuhurtham)";
+                startDate = "20261122T042100Z"; // 09:51 AM IST in UTC
+                endDate = "20261122T080000Z";
+                location = "Urvasi Royal Grand Banquet Hall, Patney Center, Secunderabad";
+                description = "Sumuhurtham wedding ceremony of Sai Kishor Reddy & Prasuna.";
+            } else {
+                title = "Sai Kishor Reddy & Prasuna Wedding Reception";
+                startDate = "20261124T133000Z"; // 07:00 PM IST in UTC
+                endDate = "20261124T170000Z";
+                location = "Telangana Gardens, New Bowenpally, Secunderabad";
+                description = "Wedding reception dinner and celebrations.";
+            }
+
+            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&location=${encodeURIComponent(location)}&details=${encodeURIComponent(description)}`;
+            window.open(googleUrl, '_blank');
+        }
+
+        // Floating Rose Petal & Gold Dust Canvas Animation
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -722,235 +703,38 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = -20;
-                this.size = Math.random() * 4 + 2;
-                this.speedY = Math.random() * 1.5 + 0.5;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.color = Math.random() > 0.4 ? 'rgba(212, 175, 55, ' + (Math.random() * 0.6 + 0.2) + ')' : 'rgba(184, 134, 11, ' + (Math.random() * 0.5 + 0.2) + ')';
-                this.rotation = Math.random() * 360;
-                this.rotSpeed = Math.random() * 2 - 1;
-            }
-
-            update() {
-                this.y += this.speedY;
-                this.x += this.speedX;
-                this.rotation += this.rotSpeed;
-
-                if (this.y > canvas.height + 20) {
-                    this.reset();
-                }
-            }
-
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate((this.rotation * Math.PI) / 180);
-                ctx.fillStyle = this.color;
-                
-                // Draw soft glowing gold dust circle
-                ctx.beginPath();
-                ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        // Initialize Particles
-        for (let i = 0; i < 45; i++) {
-            particles.push(new Particle());
+        for (let i = 0; i < 35; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 3 + 1,
+                speedY: Math.random() * 0.8 + 0.3,
+                speedX: (Math.random() - 0.5) * 0.5,
+                opacity: Math.random() * 0.7 + 0.3,
+                color: Math.random() > 0.5 ? '#D4AF37' : '#F3E5AB'
+            });
         }
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
-                p.update();
-                p.draw();
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.opacity;
+                ctx.fill();
+
+                p.y += p.speedY;
+                p.x += p.speedX;
+
+                if (p.y > canvas.height) {
+                    p.y = -10;
+                    p.x = Math.random() * canvas.width;
+                }
             });
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
-
-
-        // -------------------------------------------------------------
-        // 2. Real-Time IST Wedding Countdown Timer
-        // Target: November 22, 2026, 09:51:00 AM IST (UTC+5:30)
-        // -------------------------------------------------------------
-        const weddingDate = new Date('2026-11-22T09:51:00+05:30').getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const difference = weddingDate - now;
-
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
-                document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
-                document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
-                document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
-            } else {
-                document.getElementById('cd-days').innerText = '00';
-                document.getElementById('cd-hours').innerText = '00';
-                document.getElementById('cd-minutes').innerText = '00';
-                document.getElementById('cd-seconds').innerText = '00';
-            }
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-
-        // -------------------------------------------------------------
-        // 3. Web Audio API Ambient Shehnai Drone Sound Generator
-        // -------------------------------------------------------------
-        let audioCtx = null;
-        let isPlaying = false;
-        let osc1, osc2, gainNode;
-
-        function toggleAudio() {
-            const icon = document.getElementById('audioIcon');
-            const btnText = document.getElementById('audioText');
-
-            if (!isPlaying) {
-                try {
-                    if (!audioCtx) {
-                        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                    }
-
-                    // Create classical Indian Tanpura / Ambient Sound Synth
-                    osc1 = audioCtx.createOscillator();
-                    osc2 = audioCtx.createOscillator();
-                    gainNode = audioCtx.createGain();
-
-                    // Frequencies corresponding to Sa (C#3 ~ 138.59Hz) and Pa (~207.65Hz)
-                    osc1.type = 'sine';
-                    osc1.frequency.setValueAtTime(138.59, audioCtx.currentTime); 
-                    
-                    osc2.type = 'triangle';
-                    osc2.frequency.setValueAtTime(207.65, audioCtx.currentTime);
-
-                    gainNode.gain.setValueAtTime(0.01, audioCtx.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 2);
-
-                    osc1.connect(gainNode);
-                    osc2.connect(gainNode);
-                    gainNode.connect(audioCtx.destination);
-
-                    osc1.start();
-                    osc2.start();
-
-                    isPlaying = true;
-                    icon.className = 'fas fa-volume-up text-gold-400 animate-pulse';
-                    if (btnText) btnText.innerText = 'Playing';
-                    showToast('Playing Ambient Wedding Sound');
-                } catch (e) {
-                    console.log('Audio playback error', e);
-                }
-            } else {
-                if (gainNode) {
-                    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
-                    setTimeout(() => {
-                        osc1.stop();
-                        osc2.stop();
-                        isPlaying = false;
-                        icon.className = 'fas fa-music';
-                        if (btnText) btnText.innerText = 'Music';
-                    }, 500);
-                }
-            }
-        }
-
-
-        // -------------------------------------------------------------
-        // 4. Calendar Integration (.ics / Google Calendar links)
-        // -------------------------------------------------------------
-        function addToCalendar(eventType) {
-            let title, details, location, startTime, endTime;
-
-            if (eventType === 'wedding') {
-                title = encodeURIComponent('Sai Kishor Reddy & Prasuna Wedding (Sumuhurtham)');
-                details = encodeURIComponent('Auspicious Sumuhurtham of Chi. Sai Kishor Reddy with Chi. La. Sow. Prasuna');
-                location = encodeURIComponent('Urvasi Royal (Grand) Banquet Hall, 4th Floor, Patney Center, Secunderabad');
-                startTime = '20261122T042100Z'; // UTC time for 09:51 AM IST
-                endTime = '20261122T083000Z';
-            } else {
-                title = encodeURIComponent('Sai Kishor Reddy & Prasuna Wedding Reception');
-                details = encodeURIComponent('Wedding Reception Celebration');
-                location = encodeURIComponent('Telangana Gardens, New Bowenpally, Secunderabad');
-                startTime = '20261124T133000Z'; // UTC time for 07:00 PM IST
-                endTime = '20261124T173000Z';
-            }
-
-            const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startTime}/${endTime}&details=${details}&location=${location}`;
-            window.open(gCalUrl, '_blank');
-        }
-
-
-        // -------------------------------------------------------------
-        // 5. Native Web Share API & Clipboard Fallback
-        // -------------------------------------------------------------
-        function shareInvitation() {
-            const shareData = {
-                title: 'Sai Kishor Reddy & Prasuna Wedding Invitation',
-                text: 'We solicit your gracious presence on the auspicious occasion of the marriage of Chi. Sai Kishor Reddy with Chi. La. Sow. Prasuna on 22nd November 2026.',
-                url: window.location.href
-            };
-
-            if (navigator.share) {
-                navigator.share(shareData).catch((err) => {
-                    console.log('Share error:', err);
-                });
-            } else {
-                copyInvitationLink();
-            }
-        }
-
-        function copyInvitationLink() {
-            const input = document.createElement('input');
-            input.value = window.location.href;
-            document.body.appendChild(input);
-            input.select();
-            document.execCommand('copy');
-            document.body.removeChild(input);
-
-            showToast('Invitation link copied to clipboard!');
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toastMsg');
-            toastMsg.innerText = message;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3500);
-        }
-
-        // -------------------------------------------------------------
-        // 6. Mobile Menu Toggle
-        // -------------------------------------------------------------
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
     </script>
-    <button id="musicToggleBtn" onclick="toggleAudio()" class="fixed bottom-6 right-6 z-50 bg-amber-600 hover:bg-amber-700 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 border-2 border-amber-200 animate-bounce" title="Toggle Music">
-  <svg id="audioIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-  </svg>
-</button>
-    <audio id="weddingAudio" loop preload="auto">
-  <source src="manasaa.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
 </body>
 </html>
